@@ -12,7 +12,7 @@ const PreviewCardLink = styled(Link)`
   background-color: var(--col-element);
   border-radius: 6px;
   box-shadow: var(--shadow);
-  max-width: 280px;
+  max-width: 320px;
   justify-self: center;
 
   &:hover {
@@ -22,6 +22,7 @@ const PreviewCardLink = styled(Link)`
 
 const Top = styled.div`
   height: 180px;
+  min-width: 300px;
 `;
 
 const Bottom = styled.div`

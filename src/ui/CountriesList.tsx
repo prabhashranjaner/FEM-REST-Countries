@@ -13,7 +13,7 @@ import Loader from "./Loader";
 const Container = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  gap: 2.3rem;
   margin: 0 auto;
 `;
 
