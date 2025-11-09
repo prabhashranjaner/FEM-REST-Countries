@@ -1,8 +1,14 @@
-import styled from "styled-components";
-import { useCountries } from "../hooks/useCountries";
-import type { CountryType } from "../types/countryRelatedTypes";
-import PreviewCard from "./PreviewCard";
 import { useSearchParams } from "react-router";
+import styled from "styled-components";
+
+import PreviewCard from "./PreviewCard";
+
+import { useCountries } from "../hooks/useCountries";
+import type {
+  CountriesQueryType,
+  CountryType,
+} from "../types/countryRelatedTypes";
+import Loader from "./Loader";
 
 const Container = styled.ul`
   display: grid;
@@ -20,16 +26,23 @@ const NoCountryText = styled.h3`
   }
 `;
 
+const LoaderContainer = styled.div`
+  margin: 0 auto;
+  margin-top: 5rem;
+  @media (min-width: 786px) {
+    margin-top: 10rem;
+  }
+`;
+
 type PropsType = {
   query: string;
 };
 
+// !==============COMPONENT ================
 const CountriesList = ({ query }: PropsType) => {
-  const {
-    countries,
-    isPending,
-  }: { countries: CountryType[]; isPending: boolean } = useCountries();
+  const { countries, isPending, error }: CountriesQueryType = useCountries();
 
+  // ! Getting filter parameter from URL
   const [searchParams] = useSearchParams();
   let visibleCountries: CountryType[];
 
@@ -44,17 +57,27 @@ const CountriesList = ({ query }: PropsType) => {
   }
 
   //! 2 Search
-  visibleCountries = visibleCountries.filter((country) =>
-    country.name.common.toLowerCase().includes(query.toLowerCase())
-  );
+  if (query && visibleCountries.length) {
+    visibleCountries = visibleCountries.filter((country) =>
+      country.name.common.toLowerCase().includes(query.toLowerCase())
+    );
+  }
+
+  if (error) return <NoCountryText>{error.message}</NoCountryText>;
 
   return (
     <Container>
+      {/* For Loading State */}
+      {isPending && (
+        <LoaderContainer>
+          <Loader />
+        </LoaderContainer>
+      )}
       {!isPending &&
         visibleCountries?.map((country) => (
           <PreviewCard country={country} key={country.cca3} />
         ))}
-
+      {/*  When no countries to show */}
       {!isPending && visibleCountries.length === 0 && (
         <NoCountryText>No country Found. Try again!</NoCountryText>
       )}

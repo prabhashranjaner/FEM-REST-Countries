@@ -1,6 +1,8 @@
 import { Link } from "react-router";
 import styled from "styled-components";
+
 import type { CountryType } from "../types/countryRelatedTypes";
+import { numberWithCommas } from "../utils";
 
 const PreviewCardLink = styled(Link)`
   display: block;
@@ -20,12 +22,6 @@ const PreviewCardLink = styled(Link)`
 
 const Top = styled.div`
   height: 180px;
-`;
-
-const Image = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 `;
 
 const Bottom = styled.div`
@@ -56,13 +52,13 @@ const PreviewCard = ({ country }: PropsType) => {
   return (
     <PreviewCardLink to={`/country/${cca3} `}>
       <Top>
-        <Image alt="country-flag-thumbnail" src={flags.png} />
+        <img alt="country-flag-thumbnail" src={flags.png} />
       </Top>
       <Bottom>
         <h2>{name.common}</h2>
         <p>
           <span>Population: </span>
-          {population}
+          {numberWithCommas(population)}
         </p>
         <p>
           <span>Region: </span>

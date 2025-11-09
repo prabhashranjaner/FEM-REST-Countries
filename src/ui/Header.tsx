@@ -12,14 +12,18 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 1rem;
+  padding: 2rem 2rem;
   margin: 0 auto;
   max-width: 80rem;
 `;
 
 const Text = styled.h1`
-  font-size: 1.3rem;
+  font-size: 1rem;
   font-weight: 800;
+
+  @media (min-width: 786px) {
+    font-size: 1.3rem;
+  }
 
   @media (min-width: 1440px) {
     font-size: 1.5rem;

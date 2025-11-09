@@ -11,7 +11,7 @@ export async function getAllCountries() {
 }
 
 export async function getCountry(id: string) {
-  const res = await api.get(`/all/alpha/${id}`);
+  const res = await api.get(`/alpha/${id}`);
 
   return res;
 }

@@ -9,3 +9,9 @@ export type CountryType = {
   cca3: string;
   population: number;
 };
+
+export type CountriesQueryType = {
+  countries: CountryType[];
+  isPending: boolean;
+  error: Error | null;
+};
