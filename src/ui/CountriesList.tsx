@@ -10,7 +10,7 @@ import type {
 } from "../types/countryRelatedTypes";
 import Loader from "./Loader";
 
-const Container = styled.ul`
+const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2.3rem;

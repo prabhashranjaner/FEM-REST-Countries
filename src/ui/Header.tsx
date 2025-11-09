@@ -48,7 +48,7 @@ const Header = () => {
     <StyledHeader>
       <Container>
         <Text>Where in the world?</Text>
-        <Right role="button" onClick={toggleDarkMode}>
+        <Right onClick={toggleDarkMode}>
           {isDarkMode ? <IoSunny /> : <IoMdMoon />}
 
           <span>{isDarkMode ? "Light Mode" : "Dark Mode"}</span>

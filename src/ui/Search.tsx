@@ -1,3 +1,4 @@
+import type { FormEvent } from "react";
 import { IoIosSearch } from "react-icons/io";
 import styled from "styled-components";
 
@@ -41,8 +42,11 @@ type PropsType = {
 };
 
 const Search = ({ query, setQuery }: PropsType) => {
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+  }
   return (
-    <StyledForm>
+    <StyledForm onSubmit={handleSubmit}>
       <Icon size={30} />
 
       <Input
@@ -51,6 +55,10 @@ const Search = ({ query, setQuery }: PropsType) => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
+      <button
+        style={{ display: "hidden", position: "absolute" }}
+        type="submit"
+      ></button>
     </StyledForm>
   );
 };
