@@ -12,8 +12,10 @@ import Loader from "./Loader";
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2.3rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  /* grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr)); */
+
+  gap: 1rem;
   margin: 0 auto;
 `;
 
